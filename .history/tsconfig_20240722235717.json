@@ -10,9 +10,6 @@
       "@/components/*": [
         "src/components/*"
       ],
-      "@assets/*": [
-        "assets/*"
-      ],
     }
   },
   "include": [

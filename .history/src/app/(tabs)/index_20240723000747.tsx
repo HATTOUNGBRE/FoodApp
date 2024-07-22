@@ -6,17 +6,19 @@ import ProductListItems from '@/src/components/ProductListItems';
 
 
 export default function MenuScreen() {
-  return( 
+  return( <View>
+    {/* <ProductListItems product = {products[5]}/>
+    <ProductListItems product = {products[1]}/>
+    <ProductListItems product = {products[2]}/>
+    <ProductListItems product = {products[3]}/> */}
+
     <FlatList
       data={products}
       renderItem={({item}) => <ProductListItems product={item} />}
-      numColumns={2}
-      contentContainerStyle={{gap: 10, padding: 10}}
-      columnWrapperStyle={{gap: 10}}
-      />
+    />
     
 
-  );
+  </View>);
 }
 
 
