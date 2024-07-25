@@ -15,7 +15,7 @@ const ProductListItems = ({product}: ProductListItemsProps) => {
 const segments= useSegments();
 console.log(segments)
   return (
-    <Link href={`/${segments[0]}/menu/${product.id}`} asChild>
+    <Link href={`/menu/${product.id}`} asChild>
      <Pressable  style={styles.container}>
     
       <Image source={{ uri: product.image || defaultImagePizza }} style={styles.image} resizeMode='contain' />
