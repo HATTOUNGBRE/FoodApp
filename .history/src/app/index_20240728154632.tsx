@@ -15,7 +15,7 @@ const index = () => {
       <Link href={'/sign-in'} asChild>
         <Button text="Sign in" />
       </Link>
-     
+
     </View>
   );
 };
