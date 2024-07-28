@@ -8,8 +8,7 @@ export default function MenuStack() {
     return ( 
     
     <Stack>
-    <Stack.Screen 
-        name="index"
+    <Stack.Screen name="index"
         options={{
           title: 'Menu',
           headerRight: () => (

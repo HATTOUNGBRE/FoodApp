@@ -2,7 +2,7 @@ import Button from '@/src/components/Button'
 import { defaultImagePizza } from '@/src/components/ProductListItems'
 import React, { Component } from 'react'
 import { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Image, Alert,} from 'react-native'
+import { Text, View, StyleSheet, TextInput, Image,} from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import { Stack, useLocalSearchParams } from 'expo-router'
 
@@ -10,27 +10,12 @@ import { Stack, useLocalSearchParams } from 'expo-router'
 const CreateProductScreen = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
-    const [errors, setErrors] = useState('')
     const [image, setImage ]  = useState<string | null>(null);
     const { id } = useLocalSearchParams();
     const isUpdating= !!id; // !! converts to boolean
 
+    const [errors, setErrors] = useState('')
     
-    const onSubmit = () => {
-        if (isUpdating){
-            onUpdateProduct()
-        } else {
-            onCreateProduct()
-        }
-    }
-
-    const onUpdateProduct = () => {
-        if (!validateInputs()){
-            return;
-          }
-        console.warn('Update Product: ', name, price,'€')
-        resetFields();
-    }
     
     const onCreateProduct = () => {
        
@@ -77,32 +62,18 @@ const CreateProductScreen = () => {
           setImage(result.assets[0].uri);
         }
       };
-
-      const onDelete= () => {
-        console.warn('Delete Product???!!: ', name, price,'€')
-       
-    }
-
-    const confirmDelete = () => {
-        Alert.alert('Confirm','Are you sure you want to delete this product?',[
-            {text: 'Cancel', style: 'cancel'},
-            {text: 'Delete', style: 'destructive', onPress: onDelete}
-        ]) 
-    //   onDelete ()
-    //     resetFields();
-    }
     
 
     return (
       <View style={styles.container}>
-        <Stack.Screen options={{title: isUpdating? 'Update Product' : 'Create Product'}} />
+        <Stack.Screen options={{title: 'Create Product'}} />
         
         <Image source={{uri: image || defaultImagePizza}} style={styles.image} />
         <Text onPress={pickImage} style={styles.textButton}>
             Select an image
             </Text>
 
-        <Text style={styles.title}>{isUpdating?"Update a Product":"Create a new Product" }</Text>
+        <Text style={styles.title}>Create a new Product</Text>
         <Text style={styles.label}>Name</Text>
         <TextInput 
         placeholder="Name" 
@@ -119,8 +90,7 @@ const CreateProductScreen = () => {
 
 
         <Text style={{color: 'red', textAlign: 'center'}}>{errors}</Text>       
-        <Button text={isUpdating? "Update":"Create Product"} onPress={onSubmit} />
-        {isUpdating && <Text style={styles.textButton} onPress={confirmDelete} >Delete Product</Text>    }
+        <Button text="Create Product" onPress={onCreateProduct} />
       </View>
     )
   

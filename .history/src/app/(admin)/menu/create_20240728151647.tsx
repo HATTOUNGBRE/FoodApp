@@ -79,15 +79,12 @@ const CreateProductScreen = () => {
       };
 
       const onDelete= () => {
-        console.warn('Delete Product???!!: ', name, price,'€')
+        console.warn('Delete Product: ', name, price,'€')
        
     }
 
     const confirmDelete = () => {
-        Alert.alert('Confirm','Are you sure you want to delete this product?',[
-            {text: 'Cancel', style: 'cancel'},
-            {text: 'Delete', style: 'destructive', onPress: onDelete}
-        ]) 
+        Alert.alert('Confirm','Are you sure you want to delete this product?') 
     //   onDelete ()
     //     resetFields();
     }

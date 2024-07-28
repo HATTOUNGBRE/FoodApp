@@ -2,7 +2,7 @@ import Button from '@/src/components/Button'
 import { defaultImagePizza } from '@/src/components/ProductListItems'
 import React, { Component } from 'react'
 import { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Image, Alert,} from 'react-native'
+import { Text, View, StyleSheet, TextInput, Image,} from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import { Stack, useLocalSearchParams } from 'expo-router'
 
@@ -79,17 +79,14 @@ const CreateProductScreen = () => {
       };
 
       const onDelete= () => {
-        console.warn('Delete Product???!!: ', name, price,'€')
+        console.warn('Delete Product: ', name, price,'€')
        
     }
 
     const confirmDelete = () => {
-        Alert.alert('Confirm','Are you sure you want to delete this product?',[
-            {text: 'Cancel', style: 'cancel'},
-            {text: 'Delete', style: 'destructive', onPress: onDelete}
-        ]) 
-    //   onDelete ()
-    //     resetFields();
+        alert('Are you sure you want to delete this product?') 
+       onDelete()
+        resetFields();
     }
     
 

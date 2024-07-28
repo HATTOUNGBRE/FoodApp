@@ -79,7 +79,7 @@ const CreateProductScreen = () => {
       };
 
       const onDelete= () => {
-        console.warn('Delete Product???!!: ', name, price,'€')
+        console.warn('Delete Product: ', name, price,'€')
        
     }
 
