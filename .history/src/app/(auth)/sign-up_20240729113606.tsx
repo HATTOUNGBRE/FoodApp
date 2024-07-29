@@ -1,26 +1,30 @@
 import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import React, { useState } from 'react';
-import Button from '../../components/Button';
 import Colors from '../../constants/Colors';
 import { Link, Stack } from 'expo-router';
+import Button from '@/src/components/Button';
 import { supabase } from '@/src/lib/supabase';
 
-
-const SignInScreen = () => {
+const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function signInWithEmail (){
+  async function signUpWithEmail (){
     setLoading(true);
-    const {error} = await supabase.auth.signInWithPassword({ email, password });
+    const {error} = await supabase.auth.signUp({ email, password });
 
-    if (error) Alert.alert('Sign in error', error.message);
-    setLoading(false);
+    if (error) {
+     Alert.alert('Sign up error', error.message);
+     setLoading(false);
+    } else {
+      console.log('Sign up successful');
+    }
   }
+
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Sign in' }} /> 
+      <Stack.Screen options={{ title: 'Sign up' }} />
 
       <Text style={styles.label}>Email</Text>
       <TextInput
@@ -28,7 +32,7 @@ const SignInScreen = () => {
         onChangeText={setEmail}
         placeholder="jon@gmail.com"
         style={styles.input}
-      /> 
+      />
 
       <Text style={styles.label}>Password</Text>
       <TextInput
@@ -39,9 +43,9 @@ const SignInScreen = () => {
         secureTextEntry
       />
 
-      <Button onPress={signInWithEmail } disabled={loading} text="Sign in" />
-      <Link href="/sign-up" style={styles.textButton}>
-        Create an account
+      <Button onPress={signUpWithEmail} disabled={loading} text="Create account" />
+      <Link href="/sign-in" style={styles.textButton}>
+        Sign in
       </Link>
     </View>
   );
@@ -73,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignUpScreen;

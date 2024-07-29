@@ -11,11 +11,11 @@ const SignInScreen = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function signInWithEmail (){
+  async function signUpWithEmail (){
     setLoading(true);
-    const {error} = await supabase.auth.signInWithPassword({ email, password });
+    const {error} = await supabase.auth.signUp({ email, password });
 
-    if (error) Alert.alert('Sign in error', error.message);
+    if (error) Alert.alert('Sign up error', error.message);
     setLoading(false);
   }
   return (
@@ -39,7 +39,7 @@ const SignInScreen = () => {
         secureTextEntry
       />
 
-      <Button onPress={signInWithEmail } disabled={loading} text="Sign in" />
+      <Button text="Sign in" />
       <Link href="/sign-up" style={styles.textButton}>
         Create an account
       </Link>

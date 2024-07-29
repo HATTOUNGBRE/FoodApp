@@ -16,7 +16,7 @@ if(!session){
   return <Redirect href={"/sign-in"} />;
 }
 
-if(!isAdmin){
+if(isAdmin){
   return <Redirect href={"/(user)"} />;
 }
 console.log('isAdmin', isAdmin);

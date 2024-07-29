@@ -13,11 +13,11 @@ if(loading){
   return <ActivityIndicator/>;
 }
 if(!session){
-  return <Redirect href={"/sign-in"} />;
+  return <Redirect href="/sign-in" />;
 }
 
-if(!isAdmin){
-  return <Redirect href={"/(user)"} />;
+if(isAdmin){
+  return <Redirect href="/(user)" />;
 }
 console.log('isAdmin', isAdmin);
 

@@ -15,7 +15,7 @@ const SignInScreen = () => {
     setLoading(true);
     const {error} = await supabase.auth.signInWithPassword({ email, password });
 
-    if (error) Alert.alert('Sign in error', error.message);
+    if (error) Alert.alert('Sign up error', error.message);
     setLoading(false);
   }
   return (

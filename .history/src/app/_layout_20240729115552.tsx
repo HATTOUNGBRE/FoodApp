@@ -8,7 +8,6 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/src/components/useColorScheme';
 import { CartProvider } from '@/src/provider/CartProvider';
 import AuthProvider from "@/src/provider/AuthProvider"
-
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -51,7 +50,6 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AuthProvider>
       <CartProvider>
       
       <Stack>
@@ -62,7 +60,6 @@ function RootLayoutNav() {
 
       </Stack>
       </CartProvider>
-      </AuthProvider>
     </ThemeProvider>
   );
 }
